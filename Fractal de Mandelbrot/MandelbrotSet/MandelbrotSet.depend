@@ -1,0 +1,33 @@
+# depslib dependency file v1.0
+1609279651 source:e:\andre\mandelbrotset\main.c
+	<windows.h>
+	<gl/gl.h>
+	"mandelbrot.h"
+
+1609271558 e:\andre\mandelbrotset\mandelbrot.h
+
+1609331224 source:e:\andre\mandelbrotset\mandelbrot.c
+	<stdio.h>
+	<math.h>
+	<stdlib.h>
+	<windows.h>
+	<gl/gl.h>
+	<complex.h>
+	"mandelbrot.h"
+
+1611248166 source:d:\levarcasa\novas video aulas\mandelbrotset\main.c
+	<windows.h>
+	<gl/gl.h>
+	"mandelbrot.h"
+
+1611247993 d:\levarcasa\novas video aulas\mandelbrotset\mandelbrot.h
+
+1611249853 source:d:\levarcasa\novas video aulas\mandelbrotset\mandelbrot.c
+	<stdio.h>
+	<math.h>
+	<stdlib.h>
+	<windows.h>
+	<gl/gl.h>
+	<complex.h>
+	"mandelbrot.h"
+
