@@ -1,4 +1,25 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from ctypes import *
+mandelbrotGen = CDLL("./mandelbrot.so")
+ 
+#call C function to check connection
+# FILE *output_file, int image_width, int image_height,
+            #double xmin, double xmax, double ymin, double ymax,
+            #long escape_radius, long iterations
+mandelbrotGen.generate()
+
+
+#./mandelbrot-gen --center -.745,.13 -x -.008,.008 -w 5464 -h 3072 out.ppm
+ 
+# #calling randNum() C function
+# #it returns random number
+# varRand = libCalc.randNum()
+# print("Random Number is: ", varRand, type(varRand))
+ 
+# #calling addNum() C function
+# #it returns addition of two numbers
+# varAdd = libCalc.addNum(20,30)
+# print("Addition is: ", varAdd)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -148,20 +169,3 @@ if __name__ == "__main__":
     MainWindow.show()
     
     sys.exit(app.exec_())
-
-# from ctypes import *
-# from multiprocessing.connection import wait
-# libCalc = CDLL("./libcalci.so")
- 
-# #call C function to check connection
-# libCalc.connect()
- 
-# #calling randNum() C function
-# #it returns random number
-# varRand = libCalc.randNum()
-# print("Random Number is: ", varRand, type(varRand))
- 
-# #calling addNum() C function
-# #it returns addition of two numbers
-# varAdd = libCalc.addNum(20,30)
-# print("Addition is: ", varAdd)
