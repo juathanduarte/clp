@@ -11,7 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_MainWindow(object):
+class Ui_SecondWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1280, 764)
@@ -27,7 +27,7 @@ class Ui_MainWindow(object):
         self.label.setMinimumSize(QtCore.QSize(1280, 720))
         self.label.setMaximumSize(QtCore.QSize(1280, 720))
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("new4.png"))
+        self.label.setPixmap(QtGui.QPixmap("fractal.png"))
         self.label.setObjectName("label")
         self.horizontalLayout.addWidget(self.label)
         MainWindow.setCentralWidget(self.centralwidget)
@@ -44,7 +44,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = Ui_SecondWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
