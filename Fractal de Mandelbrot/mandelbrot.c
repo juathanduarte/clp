@@ -90,7 +90,7 @@ int main(){
             Zy2=Zy*Zy;
             /* */
             for (Iteration = 500; Iteration < IterationMax && ((Zx2+Zy2)<ER2);Iteration++){
-                Zy = (rand() % 3)*Zx*Zy + Cy;
+                Zy = 2*Zx*Zy + Cy;
                 // Zy = 2*Zx*Zy + Cy;
                 Zx = Zx2-Zy2 +Cx;
                 Zx2 = Zx*Zx;
