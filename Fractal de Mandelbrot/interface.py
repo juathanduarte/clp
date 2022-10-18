@@ -9,22 +9,19 @@ mandelbrotGen = CDLL("./libMandelbrot.so")
 
 class Ui_MainWindow(object):
     def openLoadingPage(self):
+        timer = QtCore.QTimer()
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_LoadingPage()
         self.ui.setupUi(self.window)
         self.window.show()
-        # self.openWindow()
-        for i in range(0, 10):
-            time.sleep(1)
-        # time.sleep(2)
-        self.window.close()
+        mandelbrotGen.main()
+        timer.singleShot(5000, self.openWindow)
             
     def openWindow(self):
-        time.sleep(20)
+        self.window.close()
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_SecondWindow()
         self.ui.setupUi(self.window)
-        mandelbrotGen.main()
         self.window.show()
 
     def setupUi(self, MainWindow):
