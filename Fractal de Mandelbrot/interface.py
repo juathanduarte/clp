@@ -5,9 +5,9 @@ from segundaTela import Ui_SecondWindow
 
 mandelbrotGen = CDLL("./libMandelbrot.so")
 
-# mandelbrotGen.mandelbrot()
 class Ui_MainWindow(object):
     def openWindow(self):
+        time.sleep(20)
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_SecondWindow()
         self.ui.setupUi(self.window)
@@ -156,7 +156,6 @@ class Ui_MainWindow(object):
         self.button_GerarFractal.setMinimumSize(QtCore.QSize(250, 150))
         self.button_GerarFractal.setMaximumSize(QtCore.QSize(435, 150))
         self.button_GerarFractal.setObjectName("button_GerarFractal")
-        # self.button_GerarFractal.clicked.connect(mandelbrot)
         
         self.verticalLayout.addWidget(self.main_frame)
         
@@ -183,7 +182,6 @@ class Ui_MainWindow(object):
         self.toolBox.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
     
-
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("Fractal de Mandelbrot - Juathan Duarte & Lucas Ferreira", "Fractal de Mandelbrot - Juathan Duarte & Lucas Ferreira"))
