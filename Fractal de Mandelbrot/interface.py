@@ -1,4 +1,3 @@
-import time
 from PyQt5 import QtCore, QtGui, QtWidgets
 from ctypes import *
 
@@ -7,15 +6,19 @@ from loadingPage import Ui_LoadingPage
 
 mandelbrotGen = CDLL("./libMandelbrot.so")
 
+class FractalThread(QtCore.QThread):
+    def run(self):
+        mandelbrotGen.main()
 class Ui_MainWindow(object):
     def openLoadingPage(self):
-        timer = QtCore.QTimer()
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_LoadingPage()
         self.ui.setupUi(self.window)
         self.window.show()
-        mandelbrotGen.main()
-        timer.singleShot(5000, self.openWindow)
+        self.worker = FractalThread()
+        self.worker.start()
+        self.worker.finished.connect(self.openWindow)
+    
             
     def openWindow(self):
         self.window.close()
