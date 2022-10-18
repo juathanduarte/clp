@@ -1,11 +1,24 @@
 import time
 from PyQt5 import QtCore, QtGui, QtWidgets
 from ctypes import *
+
 from segundaTela import Ui_SecondWindow
+from loadingPage import Ui_LoadingPage
 
 mandelbrotGen = CDLL("./libMandelbrot.so")
 
 class Ui_MainWindow(object):
+    def openLoadingPage(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_LoadingPage()
+        self.ui.setupUi(self.window)
+        self.window.show()
+        # self.openWindow()
+        for i in range(0, 10):
+            time.sleep(1)
+        # time.sleep(2)
+        self.window.close()
+            
     def openWindow(self):
         time.sleep(20)
         self.window = QtWidgets.QMainWindow()
@@ -151,7 +164,8 @@ class Ui_MainWindow(object):
         self.label_4.setGeometry(QtCore.QRect(50, 40, 62, 17))
         self.label_4.setObjectName("label_4")
         
-        self.button_GerarFractal = QtWidgets.QPushButton(self.main_frame, clicked = lambda: self.openWindow())
+        # self.button_GerarFractal = QtWidgets.QPushButton(self.main_frame, clicked = lambda: self.openWindow())
+        self.button_GerarFractal = QtWidgets.QPushButton(self.main_frame, clicked = lambda: self.openLoadingPage())
         self.button_GerarFractal.setGeometry(QtCore.QRect(10, 320, 435, 150))
         self.button_GerarFractal.setMinimumSize(QtCore.QSize(250, 150))
         self.button_GerarFractal.setMaximumSize(QtCore.QSize(435, 150))
