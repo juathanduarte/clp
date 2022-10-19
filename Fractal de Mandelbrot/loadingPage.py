@@ -1,17 +1,21 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
-import time
+from PyQt5 import QtCore, QtWidgets
 
-class Ui_LoadingPage(object):
+class Ui_loadingPage(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(252, 60)
+        
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
+        
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.centralwidget)
         self.horizontalLayout.setObjectName("horizontalLayout")
+        
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setObjectName("label")
+        
         self.horizontalLayout.addWidget(self.label)
+        
         MainWindow.setCentralWidget(self.centralwidget)
                 
         self.retranslateUi(MainWindow)
@@ -30,7 +34,7 @@ if __name__ == "__main__":
     
     MainWindow = QtWidgets.QMainWindow()
     
-    ui = Ui_LoadingPage()
+    ui = Ui_loadingPage()
     
     ui.setupUi(MainWindow)
     

@@ -13,10 +13,12 @@ int main() {
 
   /* world ( double) coordinate = parameter plane*/
   double Cx, Cy;
-  const double CxMin = rand() % (int)(0 + 1 - (-2)) + (-2);
-  const double CyMin = rand() % (int)(0 + 1 - (-2)) + (-2);
-  const double CxMax = rand() % (int)(2 + 1 - (0)) + (0);
-  const double CyMax = rand() % (int)(2 + 1 - (0)) + (0);
+  
+  const double CxMin = -2 + ((rand() % 10)/5.0);
+  const double CyMin = -2 + ((rand() % 10)/5.0);
+  const double CxMax = 2 - ((rand() % 10)/5.0);
+  const double CyMax = 2 - ((rand() % 10)/5.0);
+
 
   double PixelWidth = (CxMax - CxMin) / iXmax;
   double PixelHeight = (CyMax - CyMin) / iYmax;
@@ -56,9 +58,9 @@ int main() {
 
   int colorDiference = ((rand() % 255) + 100) % 255;
 
-  int rExteriorMandelbrot = (rInteriorMandelbrot + colorDiference) % MaxColorComponentValue;
+  int rExteriorMandelbrot = (bInteriorMandelbrot + colorDiference) % MaxColorComponentValue;
   int gExteriorMandelbrot = (gInteriorMandelbrot + colorDiference) % MaxColorComponentValue;
-  int bExteriorMandelbrot = (bInteriorMandelbrot + colorDiference) % MaxColorComponentValue;
+  int bExteriorMandelbrot = (rInteriorMandelbrot + colorDiference) % MaxColorComponentValue;
 
   /* compute and write image data bytes to the file*/
   for (iY = 0; iY < iYmax; iY++) {
