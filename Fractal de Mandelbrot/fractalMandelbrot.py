@@ -1,19 +1,16 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtWidgets
 from ctypes import *
 
 from showFractal import Ui_showFractal
 from loadingPage import Ui_loadingPage
 
-#declare a variable to use the C library
 mandelbrotGen = CDLL("./libMandelbrot.so")
 
-#use the C function to generate the fractal using threads so it doesn't freeze the UI
 class FractalThread(QtCore.QThread):
     def run(self):
         mandelbrotGen.main()
 
 class Ui_MainWindow(object):
-    #that function is called when the user clicks on the "Gerar Fractal" button, so we show a loding page while the fractal is generated
     def openLoadingPage(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_loadingPage()
@@ -22,20 +19,20 @@ class Ui_MainWindow(object):
         self.worker = FractalThread()
         self.worker.start()
         self.worker.finished.connect(self.openWindow)
-    #that function is called when the fractal is generated, so we show the fractal window
+    
     def openWindow(self):
         self.window.close()
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_showFractal()
         self.ui.setupUi(self.window)
         self.window.show()
-    #main interface setup
+        
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(797, 600)
-        MainWindow.setMinimumSize(QtCore.QSize(797, 600))
-        MainWindow.setMaximumSize(QtCore.QSize(797, 600))
-                
+        MainWindow.resize(775, 535)
+        MainWindow.setMinimumSize(QtCore.QSize(775, 535))
+        MainWindow.setMaximumSize(QtCore.QSize(775, 535))
+        
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         
@@ -48,61 +45,18 @@ class Ui_MainWindow(object):
         self.left_container.setFrameShadow(QtWidgets.QFrame.Raised)
         self.left_container.setObjectName("left_container")
         
-        self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.left_container)
-        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.left_container)
+        self.verticalLayout_5.setObjectName("verticalLayout_5")
         
-        self.leftTop_container = QtWidgets.QFrame(self.left_container)
-        self.leftTop_container.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.leftTop_container.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.leftTop_container.setObjectName("leftTop_container")
-        
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.leftTop_container)
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        
-        self.title_Fractal = QtWidgets.QLabel(self.leftTop_container)
+        self.title_Fractal = QtWidgets.QLabel(self.left_container)
         self.title_Fractal.setObjectName("title_Fractal")
         
-        self.horizontalLayout_2.addWidget(self.title_Fractal)
+        self.verticalLayout_5.addWidget(self.title_Fractal)
         
-        self.verticalLayout_4.addWidget(self.leftTop_container)
+        self.label = QtWidgets.QLabel(self.left_container)
+        self.label.setObjectName("label")
         
-        self.leftDown_container = QtWidgets.QFrame(self.left_container)
-        self.leftDown_container.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.leftDown_container.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.leftDown_container.setObjectName("leftDown_container")
-        
-        self.gridLayout = QtWidgets.QGridLayout(self.leftDown_container)
-        self.gridLayout.setObjectName("gridLayout")
-        
-        self.name_Juathan = QtWidgets.QLabel(self.leftDown_container)
-        self.name_Juathan.setObjectName("name_Juathan")
-        
-        self.gridLayout.addWidget(self.name_Juathan, 5, 0, 1, 1)
-        
-        self.avatar_Juathan = QtWidgets.QLabel(self.leftDown_container)
-        self.avatar_Juathan.setMaximumSize(QtCore.QSize(150, 150))
-        self.avatar_Juathan.setText("")
-        self.avatar_Juathan.setPixmap(QtGui.QPixmap("avatares/juatsAvatar.png"))
-        self.avatar_Juathan.setScaledContents(True)
-        self.avatar_Juathan.setObjectName("avatar_Juathan")
-        
-        self.gridLayout.addWidget(self.avatar_Juathan, 4, 0, 1, 1)
-        
-        self.avatar_Lucas = QtWidgets.QLabel(self.leftDown_container)
-        self.avatar_Lucas.setMaximumSize(QtCore.QSize(150, 150))
-        self.avatar_Lucas.setText("")
-        self.avatar_Lucas.setPixmap(QtGui.QPixmap("avatares/lucasAvatar.png"))
-        self.avatar_Lucas.setScaledContents(True)
-        self.avatar_Lucas.setObjectName("avatar_Lucas")
-        
-        self.gridLayout.addWidget(self.avatar_Lucas, 2, 0, 1, 1)
-        
-        self.name_Lucas = QtWidgets.QLabel(self.leftDown_container)
-        self.name_Lucas.setObjectName("name_Lucas")
-        
-        self.gridLayout.addWidget(self.name_Lucas, 3, 0, 1, 1)
-        
-        self.verticalLayout_4.addWidget(self.leftDown_container)
+        self.verticalLayout_5.addWidget(self.label)
         
         self.horizontalLayout.addWidget(self.left_container)
         
@@ -130,12 +84,10 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.rightTop_container)
         
         self.rightDown_container = QtWidgets.QFrame(self.right_container)
-        
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.rightDown_container.sizePolicy().hasHeightForWidth())
-        
         self.rightDown_container.setSizePolicy(sizePolicy)
         self.rightDown_container.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.rightDown_container.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -143,8 +95,8 @@ class Ui_MainWindow(object):
         
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.rightDown_container)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
-        
         self.label_Descricao = QtWidgets.QLabel(self.rightDown_container)
+        
         self.label_Descricao.setObjectName("label_Descricao")
         
         self.verticalLayout_3.addWidget(self.label_Descricao)
@@ -155,27 +107,23 @@ class Ui_MainWindow(object):
         self.button_GerarFractal.setObjectName("button_GerarFractal")
         
         self.verticalLayout_3.addWidget(self.button_GerarFractal)
-        
         self.verticalLayout.addWidget(self.rightDown_container)
-        
         self.horizontalLayout.addWidget(self.right_container)
-        
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-    #styleSheet of the window
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Fractal de Mandelbrot - Juathan Duarte & Lucas Ferreira"))
         self.title_Fractal.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:26pt; font-weight:600; text-decoration: underline;\">Fractal de</span></p><p align=\"center\"><span style=\" font-size:26pt; font-weight:600; text-decoration: underline;\">Mandelbrot</span></p></body></html>"))
-        self.name_Juathan.setText(_translate("MainWindow", "Juathan Coelho Duarte"))
-        self.name_Lucas.setText(_translate("MainWindow", "Lucas Simões Ferreira"))
+        self.label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">Membros: </span></p><p align=\"center\">Juathan Coelho Duarte</p><p align=\"center\">Lucas Simões Ferreira</p></body></html>"))
         self.title_clp.setText(_translate("MainWindow", "CLP - Conceitos de Linguagens de Programação | 2022/1"))
         self.label_Descricao.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">Conjunto de Mandelbrot</span> é um fractal definido como o conjunto </p><p align=\"center\">de pontos no plano, definido recursidamente.</p><p align=\"center\">Em sua representação gráfica, pode ser dividido em um conjunto </p><p align=\"center\">infinito de figuras, sendo a maior delas um cardióide localizado ao </p><p align=\"center\">centro do plano.</p><p align=\"center\">Existe uma infinidade de quase-círculos que tangenciam o </p><p align=\"center\">cardióide e variam de tamanho com raio tendendo a zero.</p><p align=\"center\">Cada um desses círculos tem seu próprio conjunto infinito de </p><p align=\"center\">pequenos círculos cujos raios também tendem a zero. </p><p align=\"center\">Esse processo se repete infinitamente, gerando uma figura fractal.</p></body></html>"))
         self.button_GerarFractal.setText(_translate("MainWindow", "Gerar Fractal"))
 
-#Where we render the main window
+
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
