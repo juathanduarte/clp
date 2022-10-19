@@ -38,7 +38,12 @@
   Para gerar o executável, o seguinte comando:
   `make generateExecutableWindows`
   O executável é gerado na pasta "dist", então é apenas clicá-lo para executar.
+  OBS: Para executar, necessário o Python 64-bit instalado.
 - **Linux**
   Para gerar o executável, o seguinte comando:
   `make generateExecutableLinux`
   O executável é gerado na pasta "dist", então é apenas clicá-lo para executar.
+
+##
+
+_Juathan C. Duarte e Lucas S. Ferreira, outubro/2022.<br> Última alteração: outubro/2022.<br> lsferreira@inf.ufpel.edu.br, juathan.cduarte@inf.ufpel.edu.br_
