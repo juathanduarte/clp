@@ -1,6 +1,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 int main() {
   srand(time(NULL));
@@ -16,12 +17,6 @@ int main() {
   const double CyMin = rand() % (int)(0 + 1 - (-2)) + (-2);
   const double CxMax = rand() % (int)(2 + 1 - (0)) + (0);
   const double CyMax = rand() % (int)(2 + 1 - (0)) + (0);
-  // const double CxMin = -1;
-  // const double CxMax = 0;
-  // const double CyMin = -1;
-  // const double CyMax = 1;
-
-  printf("CxMin = %f, CxMax = %f, CyMin = %f, CyMax = %f", CxMin, CxMax, CyMin, CyMax);
 
   double PixelWidth = (CxMax - CxMin) / iXmax;
   double PixelHeight = (CyMax - CyMin) / iYmax;
@@ -59,21 +54,11 @@ int main() {
   int gInteriorMandelbrot = rand() % MaxColorComponentValue;
   int bInteriorMandelbrot = rand() % MaxColorComponentValue;
 
-  printf("\n\nRGB INTERIOR= %d, %d, %d\n\n", rInteriorMandelbrot, gInteriorMandelbrot, bInteriorMandelbrot);
+  int colorDiference = ((rand() % 255) + 100) % 255;
 
-  int rExteriorMandelbrot = rand() % MaxColorComponentValue;
-  int gExteriorMandelbrot = rand() % MaxColorComponentValue;
-  int bExteriorMandelbrot = rand() % MaxColorComponentValue;
-
-  printf("RGB EXTERIOR= %d, %d, %d\n\n", rExteriorMandelbrot, gExteriorMandelbrot, bExteriorMandelbrot);
-
-  do {
-    rInteriorMandelbrot = rand() % MaxColorComponentValue;
-    gInteriorMandelbrot = rand() % MaxColorComponentValue;
-    bInteriorMandelbrot = rand() % MaxColorComponentValue;
-  } while (rInteriorMandelbrot - rExteriorMandelbrot < 100 && gInteriorMandelbrot - gExteriorMandelbrot < 100 && bInteriorMandelbrot - bExteriorMandelbrot < 100);
-
-  printf("\n\nRGB INTERIOR DEPOIS DO WHILE= %d, %d, %d\n\n", rInteriorMandelbrot, gInteriorMandelbrot, bInteriorMandelbrot);
+  int rExteriorMandelbrot = (rInteriorMandelbrot + colorDiference) % MaxColorComponentValue;
+  int gExteriorMandelbrot = (gInteriorMandelbrot + colorDiference) % MaxColorComponentValue;
+  int bExteriorMandelbrot = (bInteriorMandelbrot + colorDiference) % MaxColorComponentValue;
 
   /* compute and write image data bytes to the file*/
   for (iY = 0; iY < iYmax; iY++) {

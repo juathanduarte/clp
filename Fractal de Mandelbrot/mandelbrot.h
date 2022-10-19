@@ -1,1 +1,1 @@
-int mandelbrot();
+int main();
