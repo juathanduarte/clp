@@ -35,4 +35,5 @@
 
 ## **💻 Como Executar?**
 
--
+- Bibliotecas Python necessárias: - pyqt5 -> `pip install pyqt5` - pyinstaller -> `pip install pyinstaller`
+- **Windows** - Instalar Make -> `winget install GnuWin32.Make`
