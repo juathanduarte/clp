@@ -4,13 +4,16 @@ from ctypes import *
 from showFractal import Ui_showFractal
 from loadingPage import Ui_loadingPage
 
+#declare a variable to use the C library
 mandelbrotGen = CDLL("./libMandelbrot.so")
 
+#use the C function to generate the fractal using threads so it doesn't freeze the UI
 class FractalThread(QtCore.QThread):
     def run(self):
         mandelbrotGen.main()
 
 class Ui_MainWindow(object):
+    #that function is called when the user clicks on the "Gerar Fractal" button, so we show a loding page while the fractal is generated
     def openLoadingPage(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_loadingPage()
@@ -19,14 +22,14 @@ class Ui_MainWindow(object):
         self.worker = FractalThread()
         self.worker.start()
         self.worker.finished.connect(self.openWindow)
-    
+    #that function is called when the fractal is generated, so we show the fractal window
     def openWindow(self):
         self.window.close()
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_showFractal()
         self.ui.setupUi(self.window)
         self.window.show()
-    
+    #main interface setup
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(797, 600)
@@ -161,7 +164,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-
+    #styleSheet of the window
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Fractal de Mandelbrot - Juathan Duarte & Lucas Ferreira"))
@@ -172,7 +175,7 @@ class Ui_MainWindow(object):
         self.label_Descricao.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">Conjunto de Mandelbrot</span> é um fractal definido como o conjunto </p><p align=\"center\">de pontos no plano, definido recursidamente.</p><p align=\"center\">Em sua representação gráfica, pode ser dividido em um conjunto </p><p align=\"center\">infinito de figuras, sendo a maior delas um cardióide localizado ao </p><p align=\"center\">centro do plano.</p><p align=\"center\">Existe uma infinidade de quase-círculos que tangenciam o </p><p align=\"center\">cardióide e variam de tamanho com raio tendendo a zero.</p><p align=\"center\">Cada um desses círculos tem seu próprio conjunto infinito de </p><p align=\"center\">pequenos círculos cujos raios também tendem a zero. </p><p align=\"center\">Esse processo se repete infinitamente, gerando uma figura fractal.</p></body></html>"))
         self.button_GerarFractal.setText(_translate("MainWindow", "Gerar Fractal"))
 
-
+#Where we render the main window
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
