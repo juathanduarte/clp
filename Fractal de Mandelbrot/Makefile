@@ -1,5 +1,3 @@
-all: compileFractal generateFractal generateExecutable
-
 compileFractal: mandelbrot.c
 	gcc -o mandelbrot mandelbrot.c -lm
 
