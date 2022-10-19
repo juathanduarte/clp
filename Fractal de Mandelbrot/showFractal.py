@@ -30,7 +30,7 @@ class Ui_showFractal(object):
         self.retranslateUi(FractalGerado)
         QtCore.QMetaObject.connectSlotsByName(FractalGerado)
 
-    #This function is made to implement the multi-language support logic .
+    #This function is made to implement the multi-language support logic.
     def retranslateUi(self, FractalGerado):
         _translate = QtCore.QCoreApplication.translate
         FractalGerado.setWindowTitle(_translate("Fractal Gerado", "Fractal Gerado"))

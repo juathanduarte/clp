@@ -1,6 +1,7 @@
 from PyQt5 import QtCore, QtWidgets
 
 class Ui_loadingPage(object):
+    #We define the objects on the screen, as if it were the "css" of python.
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(252, 60)
@@ -21,12 +22,13 @@ class Ui_loadingPage(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+    #This function is made to implement the multi-language support logic .
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("Gerando Fractal", "Gerando Fractal"))
         self.label.setText(_translate("MainWindow", "Gerando Fractal, aguarde por favor!"))
 
-
+#Where we render the window we call a popup, in which we ask the user to wait for the fractal to be generated!
 if __name__ == "__main__":
     import sys
     
