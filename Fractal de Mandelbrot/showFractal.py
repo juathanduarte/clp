@@ -1,6 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_showFractal(object):
+    #We set the objects on the screen, from the image to the size of the window.
     def setupUi(self, FractalGerado):
         FractalGerado.setObjectName("FractalGerado")
         FractalGerado.resize(1280, 720)
