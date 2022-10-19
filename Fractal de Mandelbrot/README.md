@@ -4,7 +4,6 @@
 
 ```
 ├── Fractal de Mandelbrot
-│   ├── avatares
 │   ├── interface
 │   └── testes
 │       ├── arithmatic
@@ -25,7 +24,6 @@
 
 ## **🤔 Explicação dos diretórios**:
 
-- _avatares_: Contém as fotos .png dos avatares dos integrantes do grupo utilizadas na interface;
 - _interface_: Contém os arquivos .ui (XML) na qual consiste na interface da aplicação geradas no QtDesigner com a biblioteca PyQt5;
 - _testes_: Neste diretório contém todos os testes feitos para chegar no resultado final da nossa aplicação; - _arithmatic_: Aqui geramos a primeira biblioteca compartilhada, assim aprendendo a consumir a mesma no Python; - _imagens_: Resultados de alguns fractais durante o período de teste; - _mandelbrot e mandelbrotWithGraphics_: Modelos geradores de Fractais de Mandelbrot testados e descartados, pois não favoreciam a integração com o Python.
 - _.gitignore_: Ignoramos arquivos não necessários para o funcionamento da aplicação
@@ -37,3 +35,15 @@
 
 - Bibliotecas Python necessárias: - pyqt5 -> `pip install pyqt5` - pyinstaller -> `pip install pyinstaller`
 - **Windows** - Instalar Make -> `winget install GnuWin32.Make`
+  Para gerar o executável, o seguinte comando:
+  `make generateExecutableWindows`
+  O executável é gerado na pasta "dist", então é apenas clicá-lo para executar.
+  OBS: Para executar, necessário o Python 64-bit instalado.
+- **Linux**
+  Para gerar o executável, o seguinte comando:
+  `make generateExecutableLinux`
+  O executável é gerado na pasta "dist", então é apenas clicá-lo para executar.
+
+##
+
+_Juathan C. Duarte e Lucas S. Ferreira, outubro/2022.<br> Última alteração: outubro/2022.<br> lsferreira@inf.ufpel.edu.br, juathan.cduarte@inf.ufpel.edu.br_
