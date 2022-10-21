@@ -33,7 +33,7 @@
 
 ## **💻 Como Executar?**
 
-- Bibliotecas Python necessárias: - pyqt5 -> `pip install pyqt5` - pyinstaller -> `pip install pyinstaller`
+- Bibliotecas Python necessárias: - pyqt5 -> `pip install pyqt5` - pyinstaller -> `pip install pyinstaller` - ctypes -> `pip install ctypes`
 - **Windows** - Instalar Make -> `winget install GnuWin32.Make`
   Para gerar o executável, o seguinte comando:
   `make generateExecutableWindows`
